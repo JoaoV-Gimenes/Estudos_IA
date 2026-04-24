@@ -46,7 +46,7 @@ print(np.argmax(np.sum(estoque, axis=1)))
 
 #2
 total_categoria = np.sum(estoque, axis=0)
-media = np.where(np.sum(estoque, axis=0) < np.mean(total_categoria))[0]
+media = np.where(total_categoria < np.mean(total_categoria))[0]
 print(media)
 
 #3
@@ -134,5 +134,29 @@ leituras = np.random.uniform(15.0, 40.0, size=(6, 24))
 # 5. Crie uma matriz de correlação entre os 6 sensores
 #    Dica: pesquise np.corrcoef()
 #    O que os valores próximos de 1 e -1 significam?
+
+#1
+maximo_colunas = np.max(leituras, axis=0)
+print(f'Hora: {np.round(maximo_colunas.argmax(), 2 )}')
+maximo_linhas = np.max(leituras, axis=1)
+print(f'Sensor: {np.round(maximo_linhas.argmax(), 2 )}')
+
+sensor, hora = np.unravel_index(np.argmax(leituras), leituras.shape)
+print(f'Sensor: {sensor}, Hora: {hora}')
+#2
+print(np.round(np.convolve(leituras[0], np.ones(3) / 3, mode='valid'), 2).tolist())
+
+#3
+maximos = leituras.max(axis = 1, keepdims=True)
+minimo = leituras.min(axis = 1, keepdims=True)
+print(np.round((leituras - minimo) / (maximos - minimo), 2).tolist())
+
+#4
+indices_maiores = np.where(np.any(leituras > 37, axis=1))[0]
+print(indices_maiores.tolist())
+
+#5
+print(np.corrcoef(leituras))
+#valores próximos de 1 significam elevada proporcionalidade, ao contrário do -1
 
 ##################################################################################################################################################################
