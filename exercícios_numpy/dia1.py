@@ -142,13 +142,3 @@ print(f'o vendedor {np.argmax(gasto_total)} foi o que tem maior gasto total')
 print(f'O produto mais barato em média é o {np.argmin(media_p)}')
 
 ##################################################################################################################################################################
-
-np.random.seed(7)
-salarios = np.random.randint(1500, 15000, size=(8,))
-
-# 1. Normalize os salários para escala 0 a 1
-# 2. Quais funcionários ganham acima da média?  
-#    (retorne os índices E os valores)
-# 3. Qual a diferença entre o maior e o menor salário?
-# 4. Substitua todos os salários abaixo de 3000 por 3000
-#    (piso salarial)
